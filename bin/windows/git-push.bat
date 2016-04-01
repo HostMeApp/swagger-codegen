@@ -1,3 +1,3 @@
 git init %1
-git add .
+git add %1/git-push.bat
 git commit -m "First commit"
