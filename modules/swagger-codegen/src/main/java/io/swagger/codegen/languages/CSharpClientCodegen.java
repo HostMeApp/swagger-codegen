@@ -275,13 +275,17 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
             supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", packageFolder + File.separator + "Properties", "AssemblyInfo.cs"));
         }
         if (optionalProjectFileFlag) {
-            supportingFiles.add(new SupportingFile("Solution.mustache", "", packageName + ".sln"));
-            supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, packageName + ".csproj"));
+            //supportingFiles.add(new SupportingFile("Solution.mustache", "", packageName + ".sln"));
+            //supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, packageName + ".csproj"));
 
             if(Boolean.FALSE.equals(excludeTests)) {
                 supportingFiles.add(new SupportingFile("TestProject.mustache", testPackageFolder, testPackageName + ".csproj"));
             }
         }
+            supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
+	        supportingFiles.add(new SupportingFile("Project.nuspec.mustache", packageFolder, clientPackage + ".nuspec"));
+        }
+    }
 
         additionalProperties.put("apiDocPath", apiDocPath);
         additionalProperties.put("modelDocPath", modelDocPath);
