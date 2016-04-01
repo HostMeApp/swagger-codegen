@@ -266,6 +266,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
 
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
         supportingFiles.add(new SupportingFile("git_push.sh.mustache", "", "git_push.sh"));
+        supportingFiles.add(new SupportingFile("git_push.mustache", "", "git_push.bat"));
         supportingFiles.add(new SupportingFile("gitignore.mustache", "", ".gitignore"));
         // apache v2 license
         // UPDATE (20160612) no longer needed as the Apache v2 LICENSE is added globally
