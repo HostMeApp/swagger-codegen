@@ -1,4 +1,5 @@
- {"packageTitle": "HostMe.Sdk", 
+ { "packageName": "HostMe.Sdk",
+   "packageTitle": "HostMe.Sdk", 
    "packageCompany": "HostMe",
    "packageCopyright": "2016 Hostme LLC. All Rights Reserved",
    "packageDescription": "HostMe Sdk for platform APIs",
