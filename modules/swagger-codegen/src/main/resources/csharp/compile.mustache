@@ -1,5 +1,7 @@
 @echo off
 
+cd /d %1
+
 {{#supportsAsync}}SET CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319{{/supportsAsync}}
 {{^supportsAsync}}SET CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v3.5{{/supportsAsync}}
 

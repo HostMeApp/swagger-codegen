@@ -1,0 +1,12 @@
+set git_user_id=%3
+set git_repo_id=%4
+set release_note=%5
+
+cd /d %1
+git init
+git add .
+git commit -m %release_note%
+git remote add origin https://github.com/%git_user%/%git_repo%
+git remote -v
+git pull origin master
+git push origin master
