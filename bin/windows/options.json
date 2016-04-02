@@ -3,7 +3,7 @@
    "packageCompany": "HostMe",
    "packageCopyright": "2016 Hostme LLC. All Rights Reserved",
    "packageDescription": "HostMe Sdk for platform APIs",
-   "sourceFolder": "", 
+   "sourceFolder": "src", 
    "useDateTimeOffset": true, 
    "optionalProjectFile": true, 
    "optionalMethodArgument": false, 
