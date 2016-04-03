@@ -21,6 +21,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     protected String packageVersion = "1.0.0";
     protected String packageName = "IO.Swagger";
+    protected String packageCompany = "HostMe";
     protected String sourceFolder = "src" + File.separator + packageName;
 
     protected Set<String> collectionTypes;
