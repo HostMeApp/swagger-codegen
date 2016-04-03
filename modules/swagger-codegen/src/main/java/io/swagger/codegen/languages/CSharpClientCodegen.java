@@ -229,7 +229,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         }
         if (optionalProjectFileFlag) {
             supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
-	    supportingFiles.add(new SupportingFile("project.nuspec.mustache", packageFolder, clientPackage + ".nuspec"));
+	    supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", clientPackage + ".nuspec"));
         }
     }
 
