@@ -25,6 +25,7 @@ if not exist ".\nuget.exe" powershell -Command "(new-object System.Net.WebClient
 .\nuget.exe install src\{{packageName}}\packages.config -o packages
 
 if not exist ".\bin" mkdir bin
+if not exist ".\package\lib" mkdir package\lib
 
 copy packages\Newtonsoft.Json.8.0.3\lib\{{targetFrameworkNuget}}\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
 copy packages\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll bin\RestSharp.dll
