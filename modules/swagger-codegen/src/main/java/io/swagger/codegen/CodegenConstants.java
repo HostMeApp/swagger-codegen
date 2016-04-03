@@ -53,6 +53,8 @@ public class CodegenConstants {
     public static final String ENSURE_UNIQUE_PARAMS_DESC = "Whether to ensure parameter names are unique in an operation (rename parameters that are not).";
 
     public static final String PACKAGE_NAME = "packageName";
+    public static final String PACKAGE_COMPANY = "packageCompany";
+    public static final String PACKAGE_DESCRIPTION = "packageDescritpion";
     public static final String PACKAGE_VERSION = "packageVersion";
     public static final String POD_VERSION = "podVersion";
 

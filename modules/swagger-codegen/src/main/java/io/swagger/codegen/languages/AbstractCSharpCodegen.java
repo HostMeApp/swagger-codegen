@@ -183,6 +183,13 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             additionalProperties.put(CodegenConstants.PACKAGE_NAME, packageName);
         }
 
+	// {{packageCompany}}
+        if (additionalProperties.containsKey(CodegenConstants.PACKAGE_COMPANY)) {
+            setPackageName((String) additionalProperties.get(CodegenConstants.PACKAGE_COMPANY));
+        } else {
+            additionalProperties.put(CodegenConstants.PACKAGE_COMPANY, packageCompany);
+        }
+
         // {{useDateTimeOffset}}
         if (additionalProperties.containsKey(CodegenConstants.USE_DATETIME_OFFSET)) {
             useDateTimeOffset(Boolean.valueOf(additionalProperties.get(CodegenConstants.USE_DATETIME_OFFSET).toString()));
