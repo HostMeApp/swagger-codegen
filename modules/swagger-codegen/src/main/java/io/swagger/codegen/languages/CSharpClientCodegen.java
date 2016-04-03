@@ -70,6 +70,10 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
                 "C# package name (convention: Title.Case).",
                 this.packageName);
 
+	addOption(CodegenConstants.PACKAGE_COMPANY,
+                "C# package Company",
+                this.packageCompany);                                  
+
         addOption(CodegenConstants.PACKAGE_VERSION,
                 "C# package version.",
                 this.packageVersion);
