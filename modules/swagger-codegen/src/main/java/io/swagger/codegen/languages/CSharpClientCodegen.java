@@ -40,7 +40,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
     protected String packageTitle = "Swagger Library";
     protected String packageProductName = "SwaggerLibrary";
     protected String packageDescription = "A library generated from a Swagger doc";
-    protected String packageCompany = "Swagger";
+    protected String packageCompany = "HostMe";
     protected String packageCopyright = "No Copyright";
     protected String clientPackage = "IO.Swagger.Client";
     protected String localVariablePrefix = "";
@@ -146,7 +146,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         additionalProperties.put("packageTitle", packageTitle);
         additionalProperties.put("packageProductName", packageProductName);
         additionalProperties.put("packageDescription", packageDescription);
-        additionalProperties.put("packageCompany", packageCompany);
+        
         additionalProperties.put("packageCopyright", packageCopyright);
         additionalProperties.put("emitDefaultValue", optionalEmitDefaultValue);
 
@@ -177,6 +177,11 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
             setPackageGuid((String) additionalProperties.get(CodegenConstants.OPTIONAL_PROJECT_GUID));
         }
         additionalProperties.put("packageGuid", packageGuid);
+
+	if (additionalProperties.containsKey(CodegenConstants.PACKAGE_COMPANY)) {
+            setPackageCompany((String) additionalProperties.get(CodegenConstants.PACKAGE_COMPANY));
+        }
+	additionalProperties.put("packageCompany", packageCompany);
 
         if (additionalProperties.containsKey(CodegenConstants.OPTIONAL_METHOD_ARGUMENT)) {
             setOptionalMethodArgumentFlag(Boolean.valueOf(additionalProperties
@@ -292,6 +297,10 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
 
     public void setPackageGuid(String packageGuid) {
         this.packageGuid = packageGuid;
+    }
+
+    public void setPackageCompany(String packageCompany) {
+        this.packageCompany = packageCompany;
     }
 
     @Override

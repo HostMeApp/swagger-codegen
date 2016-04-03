@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class CSharpClientOptionsProvider implements OptionsProvider {
     public static final String PACKAGE_NAME_VALUE = "swagger_client_csharp";
+    public static final String PACKAGE_COMPANY_VALUE = "swagger_conmpany_csharp";
     public static final String PACKAGE_VERSION_VALUE = "1.0.0-SNAPSHOT";
     public static final String SOURCE_FOLDER_VALUE = "src_csharp";
     public static final String PACKAGE_GUID_VALUE = "{894EAEBB-649A-498C-A735-10D0BD7B73E0}";
@@ -22,6 +23,7 @@ public class CSharpClientOptionsProvider implements OptionsProvider {
         ImmutableMap.Builder<String, String> builder = new ImmutableMap.Builder<String, String>();
         return builder.put(CodegenConstants.PACKAGE_NAME, PACKAGE_NAME_VALUE)
                 .put(CodegenConstants.PACKAGE_VERSION, PACKAGE_VERSION_VALUE)
+                .put(CodegenConstants.PACKAGE_COMPANY, PACKAGE_COMPANY_VALUE)
                 .put(CodegenConstants.SORT_PARAMS_BY_REQUIRED_FLAG, "true")
                 .put(CodegenConstants.OPTIONAL_METHOD_ARGUMENT, "true")
                 .put(CodegenConstants.OPTIONAL_ASSEMBLY_INFO, "true")
