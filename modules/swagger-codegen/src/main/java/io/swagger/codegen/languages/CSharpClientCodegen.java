@@ -210,6 +210,11 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         }
         additionalProperties.put("packageGuid", packageGuid);
 
+	if (additionalProperties.containsKey(CodegenConstants.PACKAGE_COMPANY)) {
+            setPackageCompany((String) additionalProperties.get(CodegenConstants.PACKAGE_COMPANY));
+        }
+	additionalProperties.put("packageCompany", packageCompany);
+
         if (additionalProperties.containsKey(CodegenConstants.OPTIONAL_METHOD_ARGUMENT)) {
             setOptionalMethodArgumentFlag(Boolean.valueOf(additionalProperties
                     .get(CodegenConstants.OPTIONAL_METHOD_ARGUMENT).toString()));
@@ -360,6 +365,10 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
 
     public void setPackageGuid(String packageGuid) {
         this.packageGuid = packageGuid;
+    }
+
+    public void setPackageCompany(String packageCompany) {
+        this.packageCompany = packageCompany;
     }
 
     @Override

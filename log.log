@@ -1,0 +1,418 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.swagger:swagger-codegen:jar:2.1.6-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-jar-plugin @ io.swagger:swagger-codegen:[unknown-version], C:\Users\evgen\Source\Repos\swagger-codegen\modules\swagger-codegen\pom.xml, line 106, column 21
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-source-plugin @ io.swagger:swagger-codegen-project:2.1.6-SNAPSHOT, C:\Users\evgen\Source\Repos\swagger-codegen\pom.xml, line 176, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.swagger:swagger-codegen-cli:jar:2.1.6-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-source-plugin @ io.swagger:swagger-codegen-project:2.1.6-SNAPSHOT, C:\Users\evgen\Source\Repos\swagger-codegen\pom.xml, line 176, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.swagger:swagger-codegen-maven-plugin:maven-plugin:2.1.6-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-source-plugin @ io.swagger:swagger-codegen-project:2.1.6-SNAPSHOT, C:\Users\evgen\Source\Repos\swagger-codegen\pom.xml, line 176, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.swagger:swagger-generator:war:2.1.6-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-source-plugin @ io.swagger:swagger-codegen-project:2.1.6-SNAPSHOT, C:\Users\evgen\Source\Repos\swagger-codegen\pom.xml, line 176, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for io.swagger:swagger-codegen-project:pom:2.1.6-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.apache.maven.plugins:maven-source-plugin @ line 176, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] swagger-codegen-project
+[INFO] swagger-codegen (core library)
+[INFO] swagger-codegen (executable)
+[INFO] swagger-codegen (maven-plugin)
+[INFO] swagger-generator
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building swagger-codegen-project 2.1.6-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0-beta-1:enforce (enforce-maven) @ swagger-codegen-project ---
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (test-testng) @ swagger-codegen-project ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (default) @ swagger-codegen-project ---
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building swagger-codegen (core library) 2.1.6-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0-beta-1:enforce (enforce-maven) @ swagger-codegen ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ swagger-codegen ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 586 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ swagger-codegen ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ swagger-codegen ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 20 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ swagger-codegen ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 101 source files to C:\Users\evgen\Source\Repos\swagger-codegen\modules\swagger-codegen\target\test-classes
+[WARNING] /C:/Users/evgen/Source/Repos/swagger-codegen/modules/swagger-codegen/src/test/java/io/swagger/codegen/options/JavaOptionsProvider.java: Some input files use or override a deprecated API.
+[WARNING] /C:/Users/evgen/Source/Repos/swagger-codegen/modules/swagger-codegen/src/test/java/io/swagger/codegen/options/JavaOptionsProvider.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ swagger-codegen ---
+[INFO] Surefire report directory: C:\Users\evgen\Source\Repos\swagger-codegen\modules\swagger-codegen\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (test-testng) @ swagger-codegen ---
+[INFO] Surefire report directory: C:\Users\evgen\Source\Repos\swagger-codegen\modules\swagger-codegen\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+Configuring TestNG with: TestNG652Configurator
+{
+  "swagger" : "2.0",
+  "paths" : {
+    "/foo/baz" : {
+      "post" : {
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "myBody",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ]
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
+{
+  "swagger" : "2.0",
+  "paths" : {
+    "/foo/baz" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "it works!",
+            "schema" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "string"
+              }
+            },
+            "x-foo" : "bar"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
+{
+  "name" : "sample",
+  "classname" : "Sample",
+  "description" : "a sample model",
+  "classVarName" : "sample",
+  "modelJson" : "{\r\n  \"required\" : [ \"id\" ],\r\n  \"properties\" : {\r\n    \"id\" : {\r\n      \"type\" : \"integer\",\r\n      \"format\" : \"int64\"\r\n    },\r\n    \"theDate\" : {\r\n      \"type\" : \"string\",\r\n      \"format\" : \"date\"\r\n    },\r\n    \"createdAt\" : {\r\n      \"type\" : \"string\",\r\n      \"format\" : \"date-time\"\r\n    }\r\n  },\r\n  \"description\" : \"a sample model\"\r\n}",
+  "classFilename" : "Sample",
+  "unescapedDescription" : "a sample model",
+  "vars" : [ {
+    "baseName" : "id",
+    "getter" : "getId",
+    "setter" : "setId",
+    "datatype" : "Long",
+    "datatypeWithEnum" : "Long",
+    "name" : "id",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.id;",
+    "baseType" : "Long",
+    "jsonSchema" : "{\r\n  \"type\" : \"integer\",\r\n  \"format\" : \"int64\"\r\n}",
+    "hasMore" : true,
+    "required" : true,
+    "isPrimitiveType" : true,
+    "isNotContainer" : true,
+    "isLong" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "theDate",
+    "complexType" : "LocalDate",
+    "getter" : "getTheDate",
+    "setter" : "setTheDate",
+    "datatype" : "LocalDate",
+    "datatypeWithEnum" : "LocalDate",
+    "name" : "theDate",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.theDate;",
+    "baseType" : "LocalDate",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date\"\r\n}",
+    "hasMore" : true,
+    "isNotContainer" : true,
+    "isDate" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "createdAt",
+    "complexType" : "LocalDateTime",
+    "getter" : "getCreatedAt",
+    "setter" : "setCreatedAt",
+    "datatype" : "LocalDateTime",
+    "datatypeWithEnum" : "LocalDateTime",
+    "name" : "createdAt",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.createdAt;",
+    "baseType" : "LocalDateTime",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date-time\"\r\n}",
+    "isNotContainer" : true,
+    "isDateTime" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  } ],
+  "allVars" : [ {
+    "baseName" : "id",
+    "getter" : "getId",
+    "setter" : "setId",
+    "datatype" : "Long",
+    "datatypeWithEnum" : "Long",
+    "name" : "id",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.id;",
+    "baseType" : "Long",
+    "jsonSchema" : "{\r\n  \"type\" : \"integer\",\r\n  \"format\" : \"int64\"\r\n}",
+    "hasMore" : true,
+    "required" : true,
+    "isPrimitiveType" : true,
+    "isNotContainer" : true,
+    "isLong" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "theDate",
+    "complexType" : "LocalDate",
+    "getter" : "getTheDate",
+    "setter" : "setTheDate",
+    "datatype" : "LocalDate",
+    "datatypeWithEnum" : "LocalDate",
+    "name" : "theDate",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.theDate;",
+    "baseType" : "LocalDate",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date\"\r\n}",
+    "hasMore" : true,
+    "isNotContainer" : true,
+    "isDate" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "createdAt",
+    "complexType" : "LocalDateTime",
+    "getter" : "getCreatedAt",
+    "setter" : "setCreatedAt",
+    "datatype" : "LocalDateTime",
+    "datatypeWithEnum" : "LocalDateTime",
+    "name" : "createdAt",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.createdAt;",
+    "baseType" : "LocalDateTime",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date-time\"\r\n}",
+    "isNotContainer" : true,
+    "isDateTime" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  } ],
+  "mandatory" : [ "id" ],
+  "allMandatory" : [ "id" ],
+  "imports" : [ "ApiModel", "ApiModelProperty", "JsonProperty", "LocalDate", "LocalDateTime" ],
+  "hasVars" : true,
+  "hasEnums" : false,
+  "vendorExtensions" : { }
+}
+{
+  "name" : "sample",
+  "classname" : "Sample",
+  "description" : "a sample model",
+  "classVarName" : "sample",
+  "modelJson" : "{\r\n  \"required\" : [ \"id\" ],\r\n  \"properties\" : {\r\n    \"id\" : {\r\n      \"type\" : \"integer\",\r\n      \"format\" : \"int64\"\r\n    },\r\n    \"theDate\" : {\r\n      \"type\" : \"string\",\r\n      \"format\" : \"date\"\r\n    },\r\n    \"createdAt\" : {\r\n      \"type\" : \"string\",\r\n      \"format\" : \"date-time\"\r\n    }\r\n  },\r\n  \"description\" : \"a sample model\"\r\n}",
+  "classFilename" : "Sample",
+  "unescapedDescription" : "a sample model",
+  "vars" : [ {
+    "baseName" : "id",
+    "getter" : "getId",
+    "setter" : "setId",
+    "datatype" : "Long",
+    "datatypeWithEnum" : "Long",
+    "name" : "id",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.id;",
+    "baseType" : "Long",
+    "jsonSchema" : "{\r\n  \"type\" : \"integer\",\r\n  \"format\" : \"int64\"\r\n}",
+    "hasMore" : true,
+    "required" : true,
+    "isPrimitiveType" : true,
+    "isNotContainer" : true,
+    "isLong" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "theDate",
+    "complexType" : "LocalDate",
+    "getter" : "getTheDate",
+    "setter" : "setTheDate",
+    "datatype" : "LocalDate",
+    "datatypeWithEnum" : "LocalDate",
+    "name" : "theDate",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.theDate;",
+    "baseType" : "LocalDate",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date\"\r\n}",
+    "hasMore" : true,
+    "isNotContainer" : true,
+    "isDate" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "createdAt",
+    "complexType" : "DateTime",
+    "getter" : "getCreatedAt",
+    "setter" : "setCreatedAt",
+    "datatype" : "DateTime",
+    "datatypeWithEnum" : "DateTime",
+    "name" : "createdAt",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.createdAt;",
+    "baseType" : "DateTime",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date-time\"\r\n}",
+    "isNotContainer" : true,
+    "isDateTime" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  } ],
+  "allVars" : [ {
+    "baseName" : "id",
+    "getter" : "getId",
+    "setter" : "setId",
+    "datatype" : "Long",
+    "datatypeWithEnum" : "Long",
+    "name" : "id",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.id;",
+    "baseType" : "Long",
+    "jsonSchema" : "{\r\n  \"type\" : \"integer\",\r\n  \"format\" : \"int64\"\r\n}",
+    "hasMore" : true,
+    "required" : true,
+    "isPrimitiveType" : true,
+    "isNotContainer" : true,
+    "isLong" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "theDate",
+    "complexType" : "LocalDate",
+    "getter" : "getTheDate",
+    "setter" : "setTheDate",
+    "datatype" : "LocalDate",
+    "datatypeWithEnum" : "LocalDate",
+    "name" : "theDate",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.theDate;",
+    "baseType" : "LocalDate",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date\"\r\n}",
+    "hasMore" : true,
+    "isNotContainer" : true,
+    "isDate" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  }, {
+    "baseName" : "createdAt",
+    "complexType" : "DateTime",
+    "getter" : "getCreatedAt",
+    "setter" : "setCreatedAt",
+    "datatype" : "DateTime",
+    "datatypeWithEnum" : "DateTime",
+    "name" : "createdAt",
+    "defaultValue" : "null",
+    "defaultValueWithParam" : " = data.createdAt;",
+    "baseType" : "DateTime",
+    "jsonSchema" : "{\r\n  \"type\" : \"string\",\r\n  \"format\" : \"date-time\"\r\n}",
+    "isNotContainer" : true,
+    "isDateTime" : true,
+    "isEnum" : false,
+    "vendorExtensions" : { }
+  } ],
+  "mandatory" : [ "id" ],
+  "allMandatory" : [ "id" ],
+  "imports" : [ "ApiModel", "ApiModelProperty", "DateTime", "JsonProperty", "LocalDate" ],
+  "hasVars" : true,
+  "hasEnums" : false,
+  "vendorExtensions" : { }
+}
+Tests run: 392, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 11.371 sec <<< FAILURE! - in TestSuite
+checkOptionsProcessing(io.swagger.codegen.csharp.CSharpClientOptionsTest)  Time elapsed: 0.1 sec  <<< FAILURE!
+mockit.internal.MissingInvocation: Missing 1 invocation to:
+io.swagger.codegen.languages.CSharpClientCodegen#setPackageCompany(String)
+   with arguments: "swagger_conmpany_csharp"
+   on mock instance: io.swagger.codegen.languages.CSharpClientCodegen@cd8e1f
+	at io.swagger.codegen.languages.CSharpClientCodegen.setPackageCompany(CSharpClientCodegen.java)
+	at io.swagger.codegen.csharp.CSharpClientOptionsTest$1.<init>(CSharpClientOptionsTest.java:31)
+	at io.swagger.codegen.csharp.CSharpClientOptionsTest.setExpectations(CSharpClientOptionsTest.java:28)
+
+
+Results :
+
+Failed tests: 
+  CSharpClientOptionsTest.checkOptionsProcessing » MissingInvocation Missing 1 i...
+
+Tests run: 392, Failures: 1, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] swagger-codegen-project ............................ SUCCESS [  1.240 s]
+[INFO] swagger-codegen (core library) ..................... FAILURE [ 16.247 s]
+[INFO] swagger-codegen (executable) ....................... SKIPPED
+[INFO] swagger-codegen (maven-plugin) ..................... SKIPPED
+[INFO] swagger-generator .................................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 17.835 s
+[INFO] Finished at: 2016-04-03T09:33:36-07:00
+[INFO] Final Memory: 20M/56M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.18.1:test (test-testng) on project swagger-codegen: There are test failures.
+[ERROR] 
+[ERROR] Please refer to C:\Users\evgen\Source\Repos\swagger-codegen\modules\swagger-codegen\target\surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :swagger-codegen
