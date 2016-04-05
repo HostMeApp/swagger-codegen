@@ -13,4 +13,3 @@ copy vendor\Newtonsoft.Json.8.0.2\lib\{{targetFrameworkNuget}}\Newtonsoft.Json.d
 copy vendor\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll bin\RestSharp.dll
 
 %CSCPATH%\csc /reference:bin\Newtonsoft.Json.dll;bin\RestSharp.dll /target:library /out:package\lib\{{clientPackage}}.dll /recurse:src\*.cs /doc:package\lib\{{packageName}}.xml
-nuget.exe pack {{clientPackage}}.nuspec -BasePath package
