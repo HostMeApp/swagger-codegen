@@ -20,7 +20,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     protected boolean returnICollection = false;
 
     protected String packageVersion = "1.0.0";
-    protected String packageName = "IO.Swagger";
+    protected String packageName = "Sdk";
     protected String packageCompany = "HostMe";
     protected String sourceFolder = "src" + File.separator + packageName;
 
@@ -186,7 +186,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
 	// {{packageCompany}}
         if (additionalProperties.containsKey(CodegenConstants.PACKAGE_COMPANY)) {
-            setPackageName((String) additionalProperties.get(CodegenConstants.PACKAGE_COMPANY));
+            setPackageCompany((String) additionalProperties.get(CodegenConstants.PACKAGE_COMPANY));
         } else {
             additionalProperties.put(CodegenConstants.PACKAGE_COMPANY, packageCompany);
         }
@@ -282,15 +282,15 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         // default noop
     }
 
-    @Override
-    public String apiFileFolder() {
-        return outputFolder + File.separator + sourceFolder + File.separator + apiPackage().replace('.', File.separatorChar);
-    }
+    // @Override
+    // public String apiFileFolder() {
+    //     return outputFolder + File.separator + sourceFolder + File.separator + apiPackage().replace('.', File.separatorChar);
+    // }
 
-    @Override
-    public String modelFileFolder() {
-        return outputFolder + File.separator + sourceFolder + File.separator + modelPackage().replace('.', File.separatorChar);
-    }
+    // @Override
+    // public String modelFileFolder() {
+    //     return outputFolder + File.separator + sourceFolder + File.separator + modelPackage().replace('.', File.separatorChar);
+    // }
 
     @Override
     public String toModelFilename(String name) {
@@ -542,6 +542,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+    
+    public void setPackageCompany(String packageCompany) {
+        this.packageCompany = packageCompany;
     }
 
     public void setPackageVersion(String packageVersion) {

@@ -62,6 +62,11 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
 
         // C# client default
         setSourceFolder("src" + File.separator + "main" + File.separator + "csharp");
+        
+        packageName = "Sdk";
+        apiPackage = packageName + ".Api";
+        modelPackage = packageName + ".Model";
+        clientPackage = packageName + ".Client";
 
         cliOptions.clear();
 
@@ -136,8 +141,6 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
     public void processOpts() {
         super.processOpts();
 
-        apiPackage = packageName + ".Api";
-        modelPackage = packageName + ".Model";
         clientPackage = packageName + ".Client";
 
         additionalProperties.put("clientPackage", clientPackage);
@@ -194,8 +197,8 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
                     .get(CodegenConstants.OPTIONAL_ASSEMBLY_INFO).toString()));
         }
 
-        String packageFolder = sourceFolder + File.separator + packageName.replace(".", java.io.File.separator);
-        String clientPackageDir = sourceFolder + File.separator + clientPackage.replace(".", java.io.File.separator);
+        String packageFolder = packageName.replace(".", java.io.File.separator);
+        String clientPackageDir = clientPackage.replace(".", java.io.File.separator);
 
         //Compute the relative path to the bin directory where the external assemblies live
         //This is necessary to properly generate the project file
@@ -225,11 +228,11 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
 
 
         if (optionalAssemblyInfoFlag) {
-            supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", packageFolder + File.separator + "Properties", "AssemblyInfo.cs"));
+            supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", "Properties", "AssemblyInfo.cs"));
         }
         if (optionalProjectFileFlag) {
-            supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
-	    supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", clientPackage + ".nuspec"));
+            supportingFiles.add(new SupportingFile("Project.mustache", "", packageName + ".csproj"));
+	    supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", packageName + ".nuspec"));
         }
     }
 
