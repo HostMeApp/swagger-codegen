@@ -12,4 +12,4 @@ if not exist ".\package\lib" mkdir package\lib
 copy vendor\Newtonsoft.Json.8.0.2\lib\{{targetFrameworkNuget}}\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
 copy vendor\RestSharp.105.1.0\lib\{{targetFrameworkNuget}}\RestSharp.dll bin\RestSharp.dll
 
-%CSCPATH%\csc /reference:bin\Newtonsoft.Json.dll;bin\RestSharp.dll /target:library /out:package\lib\{{clientPackage}}.dll /recurse:.\*.cs /doc:package\lib\{{packageName}}.xml
+%CSCPATH%\csc /reference:bin\Newtonsoft.Json.dll;bin\RestSharp.dll /target:library /out:package\lib\{{packageName}}.dll /recurse:.\*.cs /doc:package\lib\{{packageName}}.xml
