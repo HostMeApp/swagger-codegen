@@ -324,15 +324,15 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         // default noop
     }
 
-    @Override
-    public String apiFileFolder() {
-        return outputFolder + File.separator + sourceFolder + File.separator + packageName + File.separator + apiPackage();
-    }
+    // @Override
+    // public String apiFileFolder() {
+    //     return outputFolder + File.separator + sourceFolder + File.separator + apiPackage().replace('.', File.separatorChar);
+    // }
 
-    @Override
-    public String modelFileFolder() {
-        return outputFolder + File.separator + sourceFolder + File.separator + packageName + File.separator + modelPackage();
-    }
+    // @Override
+    // public String modelFileFolder() {
+    //     return outputFolder + File.separator + sourceFolder + File.separator + modelPackage().replace('.', File.separatorChar);
+    // }
 
     @Override
     public String toModelFilename(String name) {
@@ -583,6 +583,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+    
+    public void setPackageCompany(String packageCompany) {
+        this.packageCompany = packageCompany;
     }
 
     public void setPackageVersion(String packageVersion) {

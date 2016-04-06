@@ -51,6 +51,14 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         modelTestTemplateFiles.put("model_test.mustache", ".cs");
         apiTestTemplateFiles.put("api_test.mustache", ".cs");
 
+        // C# client default
+        setSourceFolder("src" + File.separator + "main" + File.separator + "csharp");
+        
+        packageName = "Sdk";
+        apiPackage = packageName + ".Api";
+        modelPackage = packageName + ".Model";
+        clientPackage = packageName + ".Client";
+
         modelDocTemplateFiles.put("model_doc.mustache", ".md");
         apiDocTemplateFiles.put("api_doc.mustache", ".md");
 
@@ -149,6 +157,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
             additionalProperties.put(CodegenConstants.HIDE_GENERATION_TIMESTAMP,
                     Boolean.valueOf(additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP).toString()));
         }
+        clientPackage = packageName + ".Client";
 
         Boolean excludeTests = false;
         if(additionalProperties.containsKey(CodegenConstants.EXCLUDE_TESTS)) {
@@ -226,9 +235,11 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
                     .get(CodegenConstants.OPTIONAL_ASSEMBLY_INFO).toString()));
         }
 
+        String packageFolder = packageName.replace(".", java.io.File.separator);
+        String clientPackageDir = clientPackage.replace(".", java.io.File.separator);
         final String testPackageName = testPackageName();
-        String packageFolder = sourceFolder + File.separator + packageName;
-        String clientPackageDir = packageFolder + File.separator + clientPackage;
+        //String packageFolder = sourceFolder + File.separator + packageName;
+        //String clientPackageDir = packageFolder + File.separator + clientPackage;
         String testPackageFolder = testFolder + File.separator + testPackageName;
 
         additionalProperties.put("testPackageName", testPackageName);
@@ -282,7 +293,7 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         //supportingFiles.add(new SupportingFile("LICENSE", "", "LICENSE"));
 
         if (optionalAssemblyInfoFlag) {
-            supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", packageFolder + File.separator + "Properties", "AssemblyInfo.cs"));
+            supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", "Properties", "AssemblyInfo.cs"));
         }
         if (optionalProjectFileFlag) {
             //supportingFiles.add(new SupportingFile("Solution.mustache", "", packageName + ".sln"));
@@ -294,6 +305,8 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         }
             supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
 	        supportingFiles.add(new SupportingFile("Project.nuspec.mustache", packageFolder, clientPackage + ".nuspec"));
+            //supportingFiles.add(new SupportingFile("Project.mustache", "", packageName + ".csproj"));
+	    //supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", packageName + ".nuspec"));
         }
     }
 
