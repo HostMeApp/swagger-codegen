@@ -22,7 +22,7 @@ packages/
 .pub
 .packages
 .vagrant/
-
+bin/*
 .settings
 
 *.mustache~

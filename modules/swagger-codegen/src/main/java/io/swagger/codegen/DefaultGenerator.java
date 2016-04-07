@@ -84,6 +84,10 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                 generateSupportingFiles = false;
             }
         }
+        
+        config.additionalProperties().put("generateApis", generateApis);
+        config.additionalProperties().put("generateModels", generateModels);
+        config.additionalProperties().put("generateSupportingFiles", generateSupportingFiles);
 
         if (swagger == null || config == null) {
             throw new RuntimeException("missing swagger input or config!");
@@ -97,6 +101,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
 
         config.additionalProperties().put("generatedDate", DateTime.now().toString());
         config.additionalProperties().put("generatorClass", config.getClass().toString());
+        
 
         if (swagger.getInfo() != null) {
             Info info = swagger.getInfo();

@@ -18,9 +18,15 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
 	@Override
     public void processOpts() {
         super.processOpts();
-	    supportingFiles.add(new SupportingFile("api.d.mustache", apiPackage().replace('.', File.separatorChar), "api.d.ts"));
+	    if (additionalProperties.containsKey("generateApis") && (Boolean)additionalProperties.get("generateApis")) 
+            supportingFiles.add(new SupportingFile("api.d.mustache", apiPackage().replace('.', File.separatorChar), "api.d.ts"));
+        
+        if (additionalProperties.containsKey("generateModels") && (Boolean)additionalProperties.get("generateModels")) 
+            supportingFiles.add(new SupportingFile("model.d.mustache", modelPackage().replace('.', File.separatorChar), "model.d.ts"));
+        
+        supportingFiles.add(new SupportingFile("index.d.mustache", "", "index.d.ts"));
         supportingFiles.add(new SupportingFile("git_push.sh.mustache", "", "git_push.sh"));
-	supportingFiles.add(new SupportingFile("git_push.mustache", "", "git_push.but"));
+	    supportingFiles.add(new SupportingFile("git_push.mustache", "", "git_push.but"));
         //supportingFiles.add(new SupportingFile("gitignore.mustache", "", ".gitignore"));
 
 
