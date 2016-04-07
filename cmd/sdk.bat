@@ -1,4 +1,4 @@
-set executable=..\..\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
+set executable=..\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
 
 If Not Exist %executable% (
   mvn clean package
@@ -6,7 +6,7 @@ If Not Exist %executable% (
 
 set swagger_uri=%1
 set out_dir=clients
-set tempate_dir=..\..\modules\swagger-codegen\target\classes
+set tempate_dir=..\modules\swagger-codegen\target\classes
 set language=typescript-angular
 set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/log4j.properties
 set ags1=generate --api-package HostMe.Sdk --model-package HostMe.Sdk -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-angular-mobile
