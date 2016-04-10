@@ -112,7 +112,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
                         //"Guid",
                         //"Stream", // not really a primitive, we include it to avoid model import
                         "Object", 
-                        "TimeSpan")
+                        "TimeSpan?")
         );
 
         instantiationTypes.put("array", "List");
@@ -138,7 +138,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         typeMapping.put("map", "Dictionary");
         typeMapping.put("object", "Object");
         //typeMapping.put("uuid", "Guid");
-        typeMapping.put("timespan", "TimeSpan");
+        typeMapping.put("timespan", "TimeSpan?");
         typeMapping.put("uuid", "Guid?");
     }
 
