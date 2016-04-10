@@ -6,6 +6,6 @@
    "sourceFolder": "src", 
    "useDateTimeOffset": true, 
    "optionalProjectFile": true, 
-   "optionalMethodArgument": false, 
-  "optionalEmitDefaultValues": false
+   "optionalMethodArgument": true, 
+  "optionalEmitDefaultValues": true
 }
