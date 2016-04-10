@@ -108,7 +108,11 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
                         "Float",
                         "Guid?",
                         "System.IO.Stream", // not really a primitive, we include it to avoid model import
-                        "Object")
+                        //"Object")
+                        //"Guid",
+                        //"Stream", // not really a primitive, we include it to avoid model import
+                        "Object", 
+                        "TimeSpan")
         );
 
         instantiationTypes.put("array", "List");
@@ -133,6 +137,8 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         typeMapping.put("list", "List");
         typeMapping.put("map", "Dictionary");
         typeMapping.put("object", "Object");
+        //typeMapping.put("uuid", "Guid");
+        typeMapping.put("timespan", "TimeSpan");
         typeMapping.put("uuid", "Guid?");
     }
 
@@ -506,6 +512,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     public String getSwaggerType(Property p) {
         String swaggerType = super.getSwaggerType(p);
         String type;
+        
+        if (p instanceof StringProperty && "timespan".equals(p.getFormat()))
+            swaggerType = "timespan";
+        
         if (typeMapping.containsKey(swaggerType.toLowerCase())) {
             type = typeMapping.get(swaggerType.toLowerCase());
             if (languageSpecificPrimitives.contains(type)) {
