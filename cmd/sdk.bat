@@ -26,11 +26,11 @@ java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c o
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
 
 set language=csharp
-set out_dir=clients\hostme-sdk-csharp
-set ags=generate  --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/all -l %language% -o %out_dir%\hostme-sdk-csharp-models
-set ags1=generate --api-package HostMe.Sdk.Apis.Mobile --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-csharp-mobile
-set ags2=generate --api-package HostMe.Sdk.Apis.Admin --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-csharp-admin
-set ags3=generate --api-package HostMe.Sdk.Apis.Web --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-csharp-web
+set out_dir=clients
+set ags=generate  --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/all -l %language% -o %out_dir%\hostme-sdk-csharp\hostme-sdk-csharp-models
+set ags1=generate --api-package HostMe.Sdk.Apis.Mobile --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-csharp\hostme-sdk-csharp-mobile
+set ags2=generate --api-package HostMe.Sdk.Apis.Admin --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-csharp\hostme-sdk-csharp-admin
+set ags3=generate --api-package HostMe.Sdk.Apis.Web --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-csharp\hostme-sdk-csharp-web
 
 java %JAVA_OPTS% -Dmodels -jar %executable% %ags% -c options.json
 java %JAVA_OPTS% -Dapis -jar %executable% %ags1% -c options.json
