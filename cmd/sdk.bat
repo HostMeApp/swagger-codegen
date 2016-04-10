@@ -37,22 +37,22 @@ java %JAVA_OPTS% -Dapis -jar %executable% %ags1% -c options.json
 java %JAVA_OPTS% -Dapis -jar %executable% %ags2% -c options.json
 java %JAVA_OPTS% -Dapis -jar %executable% %ags3% -c options.json
 
-cd /d %out_dir%/hostme-sdk-angular-mobile
+cd /d %out_dir%\hostme-sdk-angular-mobile
 git add .
 git commit -m %release_note%
 git push
 
-cd /d %out_dir%/hostme-sdk-angular-web
+cd /d %out_dir%\hostme-sdk-angular-web
 git add .
 git commit -m %release_note%
 git push
 
-cd /d %out_dir%/hostme-sdk-angular-admin
+cd /d %out_dir%\hostme-sdk-angular-admin
 git add .
 git commit -m %release_note%
 git push
 
-cd /d %out_dir%/hostme-sdk-csharp
+cd /d %out_dir%\hostme-sdk-csharp
 git add .
 git commit -m %release_note%
 git push
