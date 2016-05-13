@@ -1,28 +1,27 @@
-
-namespace {{modelPackage}} {
-    'use strict';
-
 {{#models}}
 {{#model}}
+'use strict';
+import * as models from './models';
+
+{{#description}}
+/**
+ * {{{description}}}
+ */
+{{/description}}
+export interface {{classname}} {{#parent}}extends models.{{{parent}}} {{/parent}}{
+{{#vars}}
 {{#description}}
     /**
      * {{{description}}}
      */
 {{/description}}
-    export interface {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
-{{#vars}}
-{{#description}}
-        /**
-         * {{{description}}}
-         */
-{{/description}}
         "{{name}}"{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
 
 {{/vars}}
-    }
+}
 
 {{#hasEnums}}
-    export namespace {{classname}} {
+export namespace {{classname}} {
 {{#vars}}
 {{#isEnum}}
         export enum {{enumName}} {
@@ -34,8 +33,7 @@ namespace {{modelPackage}} {
         }
 {{/isEnum}}
 {{/vars}}
-    }
+}
 {{/hasEnums}}
 {{/model}}
 {{/models}}
-}

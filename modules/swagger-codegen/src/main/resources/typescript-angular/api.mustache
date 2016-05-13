@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable member-ordering */
+import * as models from '../model/models';
+import * as auth from './auth';
 
 {{#operations}}
-namespace {{apiPackage}} {
-    'use strict';
-
+'use strict';
+                                 	
 {{#description}}
     /**
     * {{&description}}
@@ -20,10 +21,50 @@ namespace {{apiPackage}} {
                 this.basePath = basePath;
             }
         }
+        
+        public authentications = {
+        'default': <auth.Authentication>new auth.VoidAuth(),
+        'oauth2': new auth.OAuth(),
+{{#authMethods}}
+{{#isBasic}}
+        '{{name}}': new auth.HttpBasicAuth(),
+{{/isBasic}}
+{{#isApiKey}}
+        '{{name}}': new auth.ApiKeyAuth({{#isKeyInHeader}}'header'{{/isKeyInHeader}}{{^isKeyInHeader}}'query'{{/isKeyInHeader}}, '{{keyParamName}}'),
+{{/isApiKey}}
+{{#isOAuth}}
+        '{{name}}': new auth.OAuth(),
+{{/isOAuth}}
+{{/authMethods}}
+    }
+    
+    set accessToken(token: string) {
+        this.authentications.oauth2.accessToken = token;
+    }
+    
+{{#authMethods}}
+{{#isBasic}}
+
+    set username(username: string) {
+        this.authentications.{{name}}.username = username;
+    }
+
+    set password(password: string) {
+        this.authentications.{{name}}.password = password;
+    }
+{{/isBasic}}
+{{#isApiKey}}
+
+    set apiKey(key: string) {
+        this.authentications.{{name}}.apiKey = key;
+    }
+{{/isApiKey}}
+
+{{/authMethods}}
 
         private extendObj<T1,T2>(objA: T1, objB: T2) {
-            for(let key in objB){
-                if(objB.hasOwnProperty(key)){
+            for(let key in objB) {
+                if(objB.hasOwnProperty(key)) {
                     objA[key] = objB[key];
                 }
             }
@@ -87,10 +128,14 @@ namespace {{apiPackage}} {
             if (extraHttpRequestParams) {
                 httpRequestParams = this.extendObj(httpRequestParams, extraHttpRequestParams);
             }
+            
+            {{#authMethods}}
+                this.authentications.{{name}}.applyToRequest(httpRequestParams);
+            {{/authMethods}}
+            this.authentications.default.applyToRequest(httpRequestParams);
 
             return this.$http(httpRequestParams);
         }
 {{/operation}}
     }
-}
 {{/operations}}
