@@ -14,12 +14,19 @@ git clone %git_repo_url%/hostme-sdk-angular-web %out_dir%/hostme-sdk-angular-web
 git clone %git_repo_url%/hostme-sdk-angular-admin %out_dir%/hostme-sdk-angular-admin
 git clone %git_repo_url%/hostme-sdk-csharp %out_dir%/hostme-sdk-csharp
 
+rmdir /Q /S "%out_dir%/hostme-sdk-angular-mobile/src"
+rmdir /Q /S "%out_dir%/hostme-sdk-angular-web/src"
+rmdir /Q /S "%out_dir%/hostme-sdk-angular-admin/src"
+rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-admin/hostme"
+rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-web/hostme"
+rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-mobile/hostme"
+
 set tempate_dir=..\modules\swagger-codegen\target\classes
 set language=typescript-angular
 set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/log4j.properties
-set ags1=generate --api-package HostMe.Sdk --model-package HostMe.Sdk -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-angular-mobile
-set ags2=generate --api-package HostMe.Sdk --model-package HostMe.Sdk -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular-admin
-set ags3=generate --api-package HostMe.Sdk --model-package HostMe.Sdk -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular-web
+set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-angular-mobile
+set ags2=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular-admin
+set ags3=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular-web
 
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
