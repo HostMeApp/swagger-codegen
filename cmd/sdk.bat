@@ -49,17 +49,17 @@ git add .
 git commit -m %release_note%
 git push
 
-cd /d ..\hostme-sdk-angular-web
+cd /d %out_dir%\hostme-sdk-angular-web
 git add .
 git commit -m %release_note%
 git push
 
-cd /d ..\hostme-sdk-angular-admin
+cd /d %out_dir%\hostme-sdk-angular-admin
 git add .
 git commit -m %release_note%
 git push
 
-cd /d ..\hostme-sdk-csharp
+cd /d %out_dir%\hostme-sdk-csharp
 git add .
 git commit -m %release_note%
 git push
