@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable member-ordering */
 import * as models from '../model/models';
 import * as auth from './auth';
+import {IApiConfig} from '../client/IApiConfig';
 
 {{#operations}}
 'use strict';
@@ -11,15 +12,12 @@ import * as auth from './auth';
     */
 {{/description}}
     export class {{classname}} {
-        protected basePath = '{{basePath}}';
         public defaultHeaders : any = {};
 
-        static $inject: string[] = ['$http', '$httpParamSerializer'];
+        static $inject: string[] = ['$http','IApiConfig', '$httpParamSerializer'];
 
-        constructor(protected $http: ng.IHttpService, protected $httpParamSerializer?: (d: any) => any, basePath?: string) {
-            if (basePath) {
-                this.basePath = basePath;
-            }
+        constructor(protected $http: ng.IHttpService, protected config: IApiConfig, protected $httpParamSerializer?: (d: any) => any) {
+           
         }
         
         public authentications = {
@@ -78,7 +76,7 @@ import * as auth from './auth';
          {{#allParams}}* @param {{paramName}} {{description}}
          {{/allParams}}*/
         public {{nickname}} ({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}extraHttpRequestParams?: any ) : ng.IHttpPromise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}> {
-            const localVarPath = this.basePath + '{{path}}'{{#pathParams}}
+            const localVarPath = this.config.basePath + '{{path}}'{{#pathParams}}
                 .replace('{' + '{{baseName}}' + '}', String({{paramName}})){{/pathParams}};
 
             let queryParameters: any = {};
