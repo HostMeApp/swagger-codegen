@@ -35,6 +35,9 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
 		{ 
             supportingFiles.add(new SupportingFile("api.d.mustache", "src" + File.separatorChar + apiPackage().replace('.', File.separatorChar), "api.ts"));
 			supportingFiles.add(new SupportingFile("auth.mustache", "src" + File.separatorChar + apiPackage().replace('.', File.separatorChar), "auth.ts"));
+            
+            supportingFiles.add(new SupportingFile("AuthorizationService.mustache", "src/client/" , "AuthorizationService.ts"));
+            supportingFiles.add(new SupportingFile("IApiConfig.mustache", "src/client/" , "IApiConfig.ts"));
 		}
 		
         if (additionalProperties.containsKey("generateModels") && (Boolean)additionalProperties.get("generateModels")) 
