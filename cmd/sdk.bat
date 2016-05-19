@@ -47,17 +47,20 @@ java %JAVA_OPTS% -Dapis -jar %executable% %ags3% -c options.json
 cd /d %out_dir%\hostme-sdk-angular-mobile
 git add .
 git commit -m %release_note%
-git push
+call npm install
+call npm version
 
 cd /d ..\hostme-sdk-angular-web
 git add .
 git commit -m %release_note%
-git push
+call npm install
+call npm version
 
 cd /d ..\hostme-sdk-angular-admin
 git add .
 git commit -m %release_note%
-git push
+call npm install
+call npm version
 
 cd /d ..\hostme-sdk-csharp
 git add .
