@@ -101,8 +101,11 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
             type = typeMapping.get(swaggerType);
             if (languageSpecificPrimitives.contains(type))
                 return type;
+        } if(swaggerType != "any") { 
+	    type = "models." + swaggerType;
         } else
-            type = "models." + swaggerType;
+            type = "any";
+        
         return type;
     }
 
