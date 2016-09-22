@@ -16,7 +16,7 @@ export interface {{classname}} {{#parent}}extends models.{{{parent}}} {{/parent}
      * {{{description}}}
      */
 {{/description}}
-    {{name}}?: {{#isEnum}}{{classname}}.{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
+    {{name}}?: {{#isEnum}}{{classname}}.{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{#isDateTime}}string{{/isDateTime}}{{^isDateTime}}{{{datatype}}}{{/isDateTime}}{{/isEnum}};
 {{/vars}}
 }
 
