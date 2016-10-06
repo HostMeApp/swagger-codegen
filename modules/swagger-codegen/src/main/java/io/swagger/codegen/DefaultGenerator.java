@@ -106,6 +106,10 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
             }
         }
 
+		config.additionalProperties().put("generateApis", generateApis);
+        config.additionalProperties().put("generateModels", generateModels);
+        config.additionalProperties().put("generateSupportingFiles", generateSupportingFiles);
+
         // model/api tests and documentation options rely on parent generate options (api or model) and no other options.
         // They default to true in all scenarios and can only be marked false explicitly
         if (generateModelTests == null) {
@@ -503,7 +507,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         bundle.put("contextPath", contextPath);
         bundle.put("apiInfo", apis);
         bundle.put("models", allModels);
-        bundle.put("apiFolder", config.apiPackage().replace('.', File.separatorChar));
+        bundle.put("apiFolder", config.apiFileFolder());
         bundle.put("modelPackage", config.modelPackage());
         List<CodegenSecurity> authMethods = config.fromSecurity(swagger.getSecurityDefinitions());
         if (authMethods != null && !authMethods.isEmpty()) {

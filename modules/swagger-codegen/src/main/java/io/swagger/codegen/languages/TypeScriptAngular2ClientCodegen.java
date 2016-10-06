@@ -68,8 +68,8 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
     @Override
     public void processOpts() {
         super.processOpts();
-        supportingFiles.add(new SupportingFile("models.mustache", modelPackage().replace('.', File.separatorChar), "models.ts"));
-        supportingFiles.add(new SupportingFile("apis.mustache", apiPackage().replace('.', File.separatorChar), "api.ts"));
+        supportingFiles.add(new SupportingFile("models.mustache", "src" + File.separatorChar + modelPackage().replace('.', File.separatorChar), "models.ts"));
+        supportingFiles.add(new SupportingFile("apis.mustache", "src" + File.separatorChar + apiPackage().replace('.', File.separatorChar), "api.ts"));
         supportingFiles.add(new SupportingFile("index.mustache", getIndexDirectory(), "index.ts"));
         supportingFiles.add(new SupportingFile("configuration.mustache", getIndexDirectory(), "configuration.ts"));
         supportingFiles.add(new SupportingFile("variables.mustache", getIndexDirectory(), "variables.ts"));
@@ -108,7 +108,7 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
 
     private String getIndexDirectory() {
         String indexPackage = modelPackage.substring(0, Math.max(0, modelPackage.lastIndexOf('.')));
-        return indexPackage.replace('.', File.separatorChar);
+        return "src" + File.separatorChar + indexPackage.replace('.', File.separatorChar);
     }
 
     @Override
@@ -206,6 +206,16 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
 
         return operations;
     }
+
+	@Override
+	public String apiFileFolder() {
+		return outputFolder + "/src/" + apiPackage().replace('.', File.separatorChar);
+	}
+
+	@Override
+	public String modelFileFolder() {
+		return outputFolder + "/src/" + modelPackage().replace('.', File.separatorChar);
+	}
 
     public String getNpmName() {
         return npmName;

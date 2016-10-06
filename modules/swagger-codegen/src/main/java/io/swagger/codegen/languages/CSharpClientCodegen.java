@@ -54,10 +54,10 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         // C# client default
         setSourceFolder("src" + File.separator + "main" + File.separator + "csharp");
         
-        packageName = "Sdk";
-        apiPackage = packageName + ".Api";
-        modelPackage = packageName + ".Model";
-        clientPackage = packageName + ".Client";
+        //packageName = "Sdk";
+        //apiPackage = packageName + ".Api";
+        //modelPackage = packageName + ".Model";
+        //clientPackage = packageName + ".Client";
 
         modelDocTemplateFiles.put("model_doc.mustache", ".md");
         apiDocTemplateFiles.put("api_doc.mustache", ".md");
@@ -164,9 +164,10 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
             excludeTests = Boolean.valueOf(additionalProperties.get(CodegenConstants.EXCLUDE_TESTS).toString());
         }
 
-        apiPackage = "Api";
-        modelPackage = "Model";
-        clientPackage = "Client";
+        //packageName = "Sdk";
+        //apiPackage = packageName + ".Api";
+        //modelPackage = packageName + ".Model";
+        //clientPackage = packageName + ".Client";
 
         additionalProperties.put("clientPackage", clientPackage);
 
@@ -238,8 +239,8 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         String packageFolder = packageName.replace(".", java.io.File.separator);
         String clientPackageDir = clientPackage.replace(".", java.io.File.separator);
         final String testPackageName = testPackageName();
-        //String packageFolder = sourceFolder + File.separator + packageName;
-        //String clientPackageDir = packageFolder + File.separator + clientPackage;
+        packageFolder = sourceFolder + File.separator + packageName;
+        clientPackageDir = packageFolder + File.separator + clientPackage;
         String testPackageFolder = testFolder + File.separator + testPackageName;
 
         additionalProperties.put("testPackageName", testPackageName);
@@ -295,21 +296,21 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         if (optionalAssemblyInfoFlag) {
             supportingFiles.add(new SupportingFile("AssemblyInfo.mustache", "Properties", "AssemblyInfo.cs"));
         }
-        if (optionalProjectFileFlag) {
+        
+		if (optionalProjectFileFlag) {
             //supportingFiles.add(new SupportingFile("Solution.mustache", "", packageName + ".sln"));
-            //supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, packageName + ".csproj"));
+            supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, packageName + ".csproj"));
+			supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", packageName + ".nuspec"));
 
             if(Boolean.FALSE.equals(excludeTests)) {
                 supportingFiles.add(new SupportingFile("TestProject.mustache", testPackageFolder, testPackageName + ".csproj"));
             }
         }
-            supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
-	        supportingFiles.add(new SupportingFile("Project.nuspec.mustache", packageFolder, clientPackage + ".nuspec"));
+            //supportingFiles.add(new SupportingFile("Project.mustache", packageFolder, clientPackage + ".csproj"));
+	        //supportingFiles.add(new SupportingFile("Project.nuspec.mustache", packageFolder, clientPackage + ".nuspec"));
             //supportingFiles.add(new SupportingFile("Project.mustache", "", packageName + ".csproj"));
-	    //supportingFiles.add(new SupportingFile("project.nuspec.mustache", "", packageName + ".nuspec"));
-        }
-    }
-
+	    
+           
         additionalProperties.put("apiDocPath", apiDocPath);
         additionalProperties.put("modelDocPath", modelDocPath);
     }
@@ -566,14 +567,16 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         return toModelFilename(name);
     }
 
+	
+
     @Override
     public String apiDocFileFolder() {
-        return (outputFolder + "/" + apiDocPath).replace('/', File.separatorChar);
+        return (outputFolder + "/" + apiDocPath).replace('.', File.separatorChar);
     }
 
     @Override
     public String modelDocFileFolder() {
-        return (outputFolder + "/" + modelDocPath).replace('/', File.separatorChar);
+        return (outputFolder + "/" + modelDocPath).replace('.', File.separatorChar);
     }
 
     @Override

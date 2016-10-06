@@ -1,11 +1,15 @@
  { "packageName": "HostMe.Sdk",
    "packageTitle": "HostMe.Sdk", 
    "packageCompany": "HostMe",
+   "targetFramework" : "uwp",
    "packageCopyright": "2016 Hostme LLC. All Rights Reserved",
    "packageDescription": "HostMe Sdk for platform APIs",
    "sourceFolder": "src", 
    "useDateTimeOffset": true, 
    "optionalProjectFile": true, 
    "optionalMethodArgument": true, 
-  "optionalEmitDefaultValues": true
+   "optionalEmitDefaultValues": true,
+   "modelTests" : false,
+   "apiTests" : false,
+   "apiPackage" : "test.api.package"
 }

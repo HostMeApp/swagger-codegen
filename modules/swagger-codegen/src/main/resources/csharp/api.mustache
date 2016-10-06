@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
-using {{clientPackage}};
-{{#hasImport}}using {{modelPackage}};
+using {{packageName}}.Client;
+{{#hasImport}}using {{packageName}}.Model;
 {{/hasImport}}
 
-namespace {{apiPackage}}
+namespace {{packageName}}.Api
 {
     {{#operations}}
     /// <summary>

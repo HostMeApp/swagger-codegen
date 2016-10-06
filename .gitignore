@@ -144,3 +144,4 @@ samples/client/petstore/typescript-fetch/**/dist/
 samples/client/petstore/typescript-fetch/**/typings
 
 /cmd/sdk-test.bat
+/cmd/sdk-test.bat

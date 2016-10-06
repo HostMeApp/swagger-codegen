@@ -27,7 +27,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     protected String packageCompany = "Swagger";
     protected String packageCopyright = "No Copyright";
 
-    protected String sourceFolder = "src";
+    protected String sourceFolder = "src" + File.separator + packageName;
 
     // TODO: Add option for test folder output location. Nice to allow e.g. ./test instead of ./src.
     //       This would require updating relative paths (e.g. path to main project file in test project file)
@@ -340,6 +340,16 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     //     return outputFolder + File.separator + sourceFolder + File.separator + modelPackage().replace('.', File.separatorChar);
     // }
 
+	@Override
+    public String apiFileFolder() {
+         return (outputFolder + File.separator + apiPackage()).replace('.', File.separatorChar);
+    }
+
+    @Override
+    public String modelFileFolder() {
+        return (outputFolder + File.separator + modelPackage()).replace('.', File.separatorChar);
+    }
+
     @Override
     public String toModelFilename(String name) {
         // should be the same as the model name
@@ -615,10 +625,6 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 		this.packageDescription = packageDescription;
 	}
 	
-    public void setPackageCompany(String packageCompany) {
-		this.packageCompany = packageCompany;
-	}
-    
     public void setPackageCopyright(String packageCopyright) {
 		this.packageCopyright = packageCopyright;
 	}
