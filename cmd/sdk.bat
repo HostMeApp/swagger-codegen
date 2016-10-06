@@ -33,6 +33,17 @@ java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c o
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
 
+set tempate_dir=..\modules\swagger-codegen\target\classes
+set language=typescript-angular2
+set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/log4j.properties
+set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-angular2-mobile
+set ags2=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular2-admin
+set ags3=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular2-web
+
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
+
 set language=csharp
 set out_dir=clients
 set ags=generate  --model-package HostMe.Sdk.Models -t %template_dir%\%language% -i %swagger_uri%/all -l %language% -o %out_dir%\hostme-sdk-csharp\hostme-sdk-csharp-models
@@ -58,6 +69,24 @@ call npm install
 call npm version %version%
 
 cd /d ..\hostme-sdk-angular-admin
+git add .
+git commit -m %release_note%
+call npm install
+call npm version %version%
+
+cd /d %out_dir%\hostme-sdk-angular2-mobile
+git add .
+git commit -m %release_note%
+call npm install
+call npm version %version%
+
+cd /d ..\hostme-sdk-angular2-web
+git add .
+git commit -m %release_note%
+call npm install
+call npm version %version%
+
+cd /d ..\hostme-sdk-angular2-admin
 git add .
 git commit -m %release_note%
 call npm install
