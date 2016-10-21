@@ -11,7 +11,7 @@ import * as models                                           from '../model/mode
 import { BASE_PATH }                                         from '../variables';
 import { Configuration }                                     from '../configuration';
 
-/* tslint:disable:no-unused-variable member-ordering */
+/* tslint:disable:no-unused-variable member-ordering max-line-length */
 
 {{#operations}}
 
@@ -22,7 +22,7 @@ import { Configuration }                                     from '../configurat
 {{/description}}
 @Injectable()
 export class {{classname}} {
-    protected basePath = '{{basePath}}';
+    protected basePath: string = '{{basePath}}';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -71,15 +71,15 @@ export class {{classname}} {
 {{/hasFormParams}}
 {{#allParams}}
 {{#required}}
-        // verify required parameter '{{paramName}}' is not null or undefined
-        if ({{paramName}} === null || {{paramName}} === undefined) {
+        // verify required parameter '{{paramName}}' is undefined
+        if ({{paramName}} === undefined) {
             throw new Error('Required parameter {{paramName}} was null or undefined when calling {{nickname}}.');
         }
 {{/required}}
 {{/allParams}}
 {{#queryParams}}
         if ({{paramName}} !== undefined) {
-            queryParameters.set('{{baseName}}', <any>{{paramName}});
+            queryParameters.set('{{baseName}}', {{paramName}} as any);
         }
 {{/queryParams}}
 
@@ -91,49 +91,45 @@ export class {{classname}} {
         // to determine the Content-Type header
         let consumes: string[] = [
             {{#consumes}}
-            '{{{mediaType}}}'{{#hasMore}}, {{/hasMore}}
+            '{{{mediaType}}}'{{#hasMore}},{{/hasMore}}
             {{/consumes}}
         ];
 
         // to determine the Accept header
         let produces: string[] = [
             {{#produces}}
-            '{{{mediaType}}}'{{#hasMore}}, {{/hasMore}}
+            '{{{mediaType}}}'{{#hasMore}},{{/hasMore}}
             {{/produces}}
         ];
-        
+
 {{#authMethods}}
         // authentication ({{name}}) required
 {{#isApiKey}}
 {{#isKeyInHeader}}
-        if (this.configuration.apiKey)
-        {
+        if (this.configuration.apiKey) {
             headers.set('{{keyParamName}}', this.configuration.apiKey);
         }
 {{/isKeyInHeader}}
 {{#isKeyInQuery}}
-        if (this.configuration.apiKey)
-        {
+        if (this.configuration.apiKey) {
             formParams.set('{{keyParamName}}', this.configuration.apiKey);
         }
 {{/isKeyInQuery}}
 {{/isApiKey}}
 {{#isBasic}}
         // http basic authentication required
-        if (this.configuration.username || this.configuration.password)
-        {
+        if (this.configuration.username || this.configuration.password) {
             headers.set('Authorization', 'Basic ' + btoa(this.configuration.username + ':' + this.configuration.password));
         }
 {{/isBasic}}
 {{#isOAuth}}
         // oauth required
-        if (this.configuration.accessToken)
-        {
+        if (this.configuration.accessToken) {
             headers.set('Authorization', 'Bearer ' + this.configuration.accessToken);
         }
 {{/isOAuth}}
 {{/authMethods}}
-            
+
 {{#hasFormParams}}
         headers.set('Content-Type', 'application/x-www-form-urlencoded');
 {{/hasFormParams}}
@@ -144,21 +140,21 @@ export class {{classname}} {
 
 {{#formParams}}
         if ({{paramName}} !== undefined) {
-            formParams.set('{{baseName}}', <any>{{paramName}}); 
+            formParams.set('{{baseName}}', {{paramName}} as any); 
         }
 {{/formParams}}
 
         let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: {{httpMethod}},
-            headers: headers,
 {{#bodyParam}}
-            body: {{paramName}} == null ? '' : JSON.stringify({{paramName}}), // https://github.com/angular/angular/issues/10612
+            body: {{paramName}} == undefined ? '' : JSON.stringify({{paramName}}), // https://github.com/angular/angular/issues/10612
 {{/bodyParam}}
 {{#hasFormParams}}
             body: formParams.toString(),
 {{/hasFormParams}}
-            search: queryParameters,
-            responseType: ResponseContentType.Json
+			headers: headers,
+            method: {{httpMethod}},			
+            responseType: ResponseContentType.Json,
+            search: queryParameters
         });
 
         return this.http.request(path, requestOptions);

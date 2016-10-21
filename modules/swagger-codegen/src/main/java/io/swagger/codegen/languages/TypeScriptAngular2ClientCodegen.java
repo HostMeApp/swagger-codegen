@@ -70,12 +70,7 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
         super.processOpts();
         supportingFiles.add(new SupportingFile("models.mustache", "src" + File.separatorChar + modelPackage().replace('.', File.separatorChar), "models.ts"));
         supportingFiles.add(new SupportingFile("apis.mustache", "src" + File.separatorChar + apiPackage().replace('.', File.separatorChar), "api.ts"));
-        supportingFiles.add(new SupportingFile("index.mustache", getIndexDirectory(), "index.ts"));
-        supportingFiles.add(new SupportingFile("configuration.mustache", getIndexDirectory(), "configuration.ts"));
-        supportingFiles.add(new SupportingFile("variables.mustache", getIndexDirectory(), "variables.ts"));
-        supportingFiles.add(new SupportingFile("gitignore", "", ".gitignore"));
-        supportingFiles.add(new SupportingFile("git_push.sh.mustache", "", "git_push.sh"));
-
+       
         if(additionalProperties.containsKey(NPM_NAME)) {
             addNpmPackageGeneration();
         }
@@ -101,9 +96,7 @@ public class TypeScriptAngular2ClientCodegen extends AbstractTypeScriptClientCod
 
         //Files for building our lib
         supportingFiles.add(new SupportingFile("README.mustache", getIndexDirectory(), "README.md"));
-        supportingFiles.add(new SupportingFile("package.mustache", getIndexDirectory(), "package.json"));
-        supportingFiles.add(new SupportingFile("typings.mustache", getIndexDirectory(), "typings.json"));
-        supportingFiles.add(new SupportingFile("tsconfig.mustache", getIndexDirectory(), "tsconfig.json"));
+        supportingFiles.add(new SupportingFile("licenseInfo.mustache", getIndexDirectory(), "licenseInfo"));
     }
 
     private String getIndexDirectory() {

@@ -1,6 +1,9 @@
 {{>licenseInfo}}
 {{#models}}
 {{#model}}
+
+/* tslint:disable:no-unused-variable member-ordering max-line-length interface-name */
+
 import * as models from './models';
 
 {{#description}}
@@ -19,18 +22,19 @@ export interface {{classname}} {{#parent}}extends models.{{{parent}}} {{/parent}
      * {{{description}}}
      */
 {{/description}}
-    {{name}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
-
+    {{name}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{#isDateTime}}string{{/isDateTime}}{{^isDateTime}}{{{datatype}}}{{/isDateTime}}{{/isEnum}};
 {{/vars}}
 }
 {{#hasEnums}}
 export namespace {{classname}} {
+'use strict';
+
 {{#vars}}
 {{#isEnum}}
     export enum {{enumName}} {
     {{#allowableValues}}
     {{#enumVars}}
-        {{{name}}} = <any> {{{value}}}{{^-last}},{{/-last}}
+        {{{name}}} = {{{value}}} as any{{^-last}},{{/-last}}
     {{/enumVars}}
     {{/allowableValues}}
     }
