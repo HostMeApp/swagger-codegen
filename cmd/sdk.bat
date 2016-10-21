@@ -11,9 +11,13 @@ set out_dir=clients
 set version=%4
 
 git clone %git_repo_url%/hostme-sdk-angular-mobile %out_dir%/hostme-sdk-angular-mobile
+git clone %git_repo_url%/hostme-sdk-angular2-mobile %out_dir%/hostme-sdk-angular2-mobile
 git clone %git_repo_url%/hostme-sdk-angular-web %out_dir%/hostme-sdk-angular-web
 git clone %git_repo_url%/hostme-sdk-angular-admin %out_dir%/hostme-sdk-angular-admin
 git clone %git_repo_url%/hostme-sdk-csharp %out_dir%/hostme-sdk-csharp
+
+rmdir /Q /S "%out_dir%/hostme-sdk-angular2-mobile/src/model"
+rmdir /Q /S "%out_dir%/hostme-sdk-angular2-mobile/src/api"
 
 rmdir /Q /S "%out_dir%/hostme-sdk-angular-mobile/src"
 rmdir /Q /S "%out_dir%/hostme-sdk-angular-web/src"
