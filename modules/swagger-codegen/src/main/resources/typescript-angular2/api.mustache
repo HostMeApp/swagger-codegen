@@ -1,5 +1,5 @@
 {{>licenseInfo}}
-import { Inject, Injectable, Optional }                      from '@angular/core';
+import { Injectable }                      					 from '@angular/core';
 import { Http, Headers, URLSearchParams }                    from '@angular/http';
 import { RequestMethod, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Response, ResponseContentType }                     from '@angular/http';
@@ -8,7 +8,6 @@ import { Observable }                                        from 'rxjs/Observab
 import 'rxjs/add/operator/map';
 
 import * as models                                           from '../model/models';
-import { BASE_PATH }                                         from '../variables';
 import { Configuration }                                     from '../configuration';
 
 /* tslint:disable:no-unused-variable member-ordering max-line-length */
@@ -22,17 +21,9 @@ import { Configuration }                                     from '../configurat
 {{/description}}
 @Injectable()
 export class {{classname}} {
-    protected basePath: string = '{{basePath}}';
     public defaultHeaders: Headers = new Headers();
-    public configuration: Configuration = new Configuration();
 
-    constructor(protected http: Http, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-        if (basePath) {
-            this.basePath = basePath;
-        }
-        if (configuration) {
-            this.configuration = configuration;
-        }
+    constructor(protected http: Http, protected configuration: Configuration) {
     }
 
 {{#operation}}
@@ -61,7 +52,7 @@ export class {{classname}} {
      {{#allParams}}* @param {{paramName}} {{description}}
      {{/allParams}}*/
     public {{nickname}}WithHttpInfo({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + `{{path}}`;
+        const path = this.configuration.basePath + '{{path}}';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -151,8 +142,8 @@ export class {{classname}} {
 {{#hasFormParams}}
             body: formParams.toString(),
 {{/hasFormParams}}
-			headers: headers,
-            method: {{httpMethod}},			
+            headers: headers,
+            method: {{httpMethod}},
             responseType: ResponseContentType.Json,
             search: queryParameters
         });
