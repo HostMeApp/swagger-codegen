@@ -45,7 +45,8 @@ java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c o
 set language=typescript-fetch
 set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-typescript-fetch-mobile
 
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -DapiTests=false -DmodelTests=false -jar %executable% %ags1% --additional-properties debugParser=true -c options.json
+
 
 
 set language=typescript-angular2
