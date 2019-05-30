@@ -1,12 +1,7 @@
-set executable=..\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
-
-If Not Exist %executable% (
-  mvn clean package
-)
-
+set executable=%5\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
 set swagger_uri=https://hostme-services-qa.azurewebsites.net/swagger/docs/mb
 set out_dir=clients
-set template_dir=..\modules\swagger-codegen\target\classes
+set template_dir=%5\modules\swagger-codegen\target\classes
 set language=typescript-fetch
 set out_dir=clients
 
