@@ -16,6 +16,7 @@ git clone %git_repo_url%/hostme-sdk-angular-web %out_dir%/hostme-sdk-angular-web
 git clone %git_repo_url%/hostme-sdk-angular-admin %out_dir%/hostme-sdk-angular-admin
 git clone %git_repo_url%/hostme-sdk-angular2-admin %out_dir%/hostme-sdk-angular2-admin
 git clone %git_repo_url%/hostme-sdk-csharp %out_dir%/hostme-sdk-csharp
+git clone %git_repo_url%/hostme-sdk-typescript-fetch-mobile %out_dir%/hostme-sdk-typescript-fetch-mobile
 
 rmdir /Q /S "%out_dir%/hostme-sdk-angular2-admin/src/model"
 rmdir /Q /S "%out_dir%/hostme-sdk-angular2-admin/src/api"
@@ -36,6 +37,13 @@ set language=typescript-angular
 set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-angular-mobile
 set ags2=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular-admin
 set ags3=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular-web
+
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
+
+set language=typescript-fetch
+set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-typescript-fetch-mobile
 
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
 java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
@@ -62,6 +70,12 @@ java %JAVA_OPTS% -Dapis -jar %executable% %ags2% -c options.json
 java %JAVA_OPTS% -Dapis -jar %executable% %ags3% -c options.json
 
 cd /d %out_dir%\hostme-sdk-angular-mobile
+git add .
+git commit -m %release_note%
+call npm install
+call npm version %version%
+
+cd /d %out_dir%\hostme-sdk-typescript-fetch-mobile
 git add .
 git commit -m %release_note%
 call npm install
