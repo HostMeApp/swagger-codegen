@@ -1,4 +1,4 @@
-set executable=..\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
+set executable=%5\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
 
 If Not Exist %executable% (
   mvn clean package
@@ -33,7 +33,7 @@ rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-admin/hostme"
 rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-web/hostme"
 rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-mobile/hostme"
 
-set template_dir=..\modules\swagger-codegen\target\classes
+set template_dir=%5\modules\swagger-codegen\target\classes
 set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx512M -DloggerPath=conf/log4j.properties
 
 set language=typescript-angular
@@ -41,14 +41,14 @@ set ags1=generate --api-package api --model-package model -t %template_dir%\%lan
 set ags2=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular-admin
 set ags3=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular-web
 
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c ./options.json
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c ./options.json
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c ./options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
 
 set language=typescript-fetch
 set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-typescript-fetch-mobile
 
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -DapiTests=false -DmodelTests=false -jar %executable% %ags1% --additional-properties debugParser=true -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
 
 
 
