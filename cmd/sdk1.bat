@@ -34,7 +34,7 @@ set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx512M -DloggerPath=conf/log4j.
 set language=typescript-fetch
 set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-typescript-fetch-mobile
 
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -DapiTests=false -DmodelTests=false -jar %executable% %ags1% --additional-properties debugParser=true -c ../cmd/options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -DapiTests=false -DmodelTests=false -jar %executable% %ags1% --additional-properties debugParser=true -c options.json
 
 cd /d %out_dir%\hostme-sdk-typescript-fetch-mobile
 git config user.email "evgeny.popov@gmail.com"
