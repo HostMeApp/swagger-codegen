@@ -41,9 +41,9 @@ set ags1=generate --api-package api --model-package model -t %template_dir%\%lan
 set ags2=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/admin -l %language% -o %out_dir%\hostme-sdk-angular-admin
 set ags3=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/web -l %language% -o %out_dir%\hostme-sdk-angular-web
 
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c options.json
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c options.json
-java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags1% -c ./options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags2% -c ./options.json
+java %JAVA_OPTS% -Dapis -Dmodels -DsupportingFiles -jar %executable% %ags3% -c ./options.json
 
 set language=typescript-fetch
 set ags1=generate --api-package api --model-package model -t %template_dir%\%language% -i %swagger_uri%/mb -l %language% -o %out_dir%\hostme-sdk-typescript-fetch-mobile
@@ -73,47 +73,63 @@ java %JAVA_OPTS% -Dapis -jar %executable% %ags2% -c options.json
 java %JAVA_OPTS% -Dapis -jar %executable% %ags3% -c options.json
 
 cd /d %out_dir%\hostme-sdk-angular-mobile
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d %out_dir%\hostme-sdk-typescript-fetch-mobile
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d ..\hostme-sdk-angular-web
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d ..\hostme-sdk-angular-admin
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d %out_dir%\hostme-sdk-angular2-mobile
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d ..\hostme-sdk-angular2-web
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 
 cd /d ..\hostme-sdk-angular2-admin
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
 
 cd /d ..\hostme-sdk-csharp
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
 git add .
 git commit -m %release_note%
 git push
