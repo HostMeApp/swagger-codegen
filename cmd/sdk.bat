@@ -72,44 +72,51 @@ java %JAVA_OPTS% -Dapis -jar %executable% %ags3% -c options.json
 cd /d %out_dir%\hostme-sdk-angular-mobile
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d %out_dir%\hostme-sdk-typescript-fetch-mobile
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d ..\hostme-sdk-angular-web
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d ..\hostme-sdk-angular-admin
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d %out_dir%\hostme-sdk-angular2-mobile
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d ..\hostme-sdk-angular2-web
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d ..\hostme-sdk-angular2-admin
 git add .
 git commit -m %release_note%
-call npm install
-call npm version %version%
+git push
+#call npm install
+#call npm version %version%
 
 cd /d ..\hostme-sdk-csharp
 git add .
