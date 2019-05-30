@@ -18,6 +18,9 @@ git clone %git_repo_url%/hostme-sdk-angular2-admin %out_dir%/hostme-sdk-angular2
 git clone %git_repo_url%/hostme-sdk-csharp %out_dir%/hostme-sdk-csharp
 git clone %git_repo_url%/hostme-sdk-typescript-fetch-mobile %out_dir%/hostme-sdk-typescript-fetch-mobile
 
+git config user.email "evgeny.popov@gmail.com"
+git config user.name "Evgeny"
+
 rmdir /Q /S "%out_dir%/hostme-sdk-angular2-admin/src/model"
 rmdir /Q /S "%out_dir%/hostme-sdk-angular2-admin/src/api"
 rmdir /Q /S "%out_dir%/hostme-sdk-angular2-mobile/src/model"
