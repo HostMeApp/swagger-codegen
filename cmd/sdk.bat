@@ -1,4 +1,4 @@
-set executable=%5\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
+set executable=..\modules\swagger-codegen-cli\target\swagger-codegen-cli.jar
 
 If Not Exist %executable% (
   mvn clean package
@@ -33,7 +33,7 @@ rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-admin/hostme"
 rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-web/hostme"
 rmdir /Q /S "%out_dir%/hostme-sdk-csharp/hostme-sdk-csharp-mobile/hostme"
 
-set template_dir=%5\modules\swagger-codegen\target\classes
+set template_dir=..\modules\swagger-codegen\target\classes
 set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256M -Xmx512M -DloggerPath=conf/log4j.properties
 
 set language=typescript-angular
